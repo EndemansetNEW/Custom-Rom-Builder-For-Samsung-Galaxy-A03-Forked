@@ -10,7 +10,7 @@ on:
         GSI:
               description: 'GSI Image Direct Link'
               required: true
-              default: 'https://sourceforge.net/projects/andyyan-gsi/files/lineage-20-td/lineage-20.0-20251021-UNOFFICIAL-arm64_bvN.img.gz'        
+              default: 'https://sourceforge.net/projects/andyyan-gsi/files/lineage-22-light/lineage-22.2-20250621-UNOFFICIAL-gsi_arm64_vN.img.gz'        
         NAME:
               description: 'Rom Name'
               required: true
@@ -50,7 +50,7 @@ jobs:
         mkdir sys
         mv *.gz sys/
         cd sys
-        gunzip lineage-20.0-20251021-UNOFFICIAL-arm64_bvN.img.gz
+        gunzip lineage-22.2-20250621-UNOFFICIAL-gsi_arm64_vN.img.gz
         mv *.img ../system.img
         cd ..
 
