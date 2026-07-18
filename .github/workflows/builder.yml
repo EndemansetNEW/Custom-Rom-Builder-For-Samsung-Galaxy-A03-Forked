@@ -46,7 +46,7 @@ jobs:
     - name: Downloading Your GSI And Extracting
       run: |
         cd lpbinary/binary
-        wget "https://sourceforge.net" -O gsi.img.gz
+        wget ${{ github.event.inputs.GSI }}
         mkdir sys
         mv gsi.img.gz sys/
         cd sys
