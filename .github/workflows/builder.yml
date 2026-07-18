@@ -22,7 +22,7 @@ on:
         VENDOR:
               description: 'Enter Direct Link Of Your Version Vendor'
               required: true
-              default: 'https://download1649.mediafire.com/i4ytk58ssnegwnSPoKgpwH7K4N5RCVVKIBC2Z9PPLCxchcTO_k3r3YLkmQKmyUCol_mS1EsTbav0NCCTois_hm6QAk-xbte1BVWOgCIr1RNSlbxGA5k6mIb1KwEQzn5TMoD8a4nbWtFRMbiT1jTHkVDsc9lptGUopqQuwvpcfXAh/js7lzvk4ldnbd07/vendor.img'
+              default: 'https://download1649.mediafire.com/h76id3vbh9rg-FF5iQy0UsSXhAb6iJPukW4SVN5x2hz2tZoKee243_g8hfWTD_HQDnIST7anF1RrNa-yoOgIITbjI8Dvvf5XELgw50RghG-O3tpeqj7TQJZIhG30h84zGlJ3VeXYXbiXovhnUOR9dS6GUrPO7sC8sgThW5f3dc5q/js7lzvk4ldnbd07/vendor.img'
 
 jobs:
   Build:
@@ -63,8 +63,8 @@ jobs:
         
         # Download everything cleanly as direct raw images—no tool conversions needed!
         wget ${{ github.event.inputs.VENDOR }} -O vendor.img
-        wget https://download1588.mediafire.com/ica6dzcbp4lgzzAa-IaOGvBH2d6wA7SthVtCZ_Pf00ILY0PzqEVZ7-6X70tL1SDiMQiagoNulVHtoSirNbTusEP9siurGy8qG2xO1dKj0QcwV1-IsERObUQltXl13T9UUSk5VbrogIZJaf4_tAOy-1YAZPPP4GjD1SZOXvmjv_kz/1ctglyzzucthqev/product.img -O product.img
-        wget https://download1582.mediafire.com/ja14gk678a0gqqaaLg4oYjjp4S83wGs3rwZxd78ndABdpIE9Srd5WjkvngENQrozBkoEl0TvzHLLKmn0aWlrCC1AlaeUy9lMKpdur_K_pDNXSBfxgWfadFnuKGiRmcRJ6g4B_xQZuF57mtCRBrE-XrbShqOINlryts4793c-K81w/2xbuj6f2fm82sm7/system_ext.img -O system_ext.img
+        wget https://download1588.mediafire.com/v6411ro4x4og-Y1lqtXyTvJLMXOO95cNMAKgDqOPhSs_CiGyBtRxtZbDjHRInFaUaBi-jz6gmBjYXTL3v_MvVRjkDU1-lF1Dy_zDoKsdujHDWlbrabBy_qaeMpQrcw-zAjyQGg1T3mh8IyIFsbeZCGu0dQLHKSs_v-uWQBopHYa5/1ctglyzzucthqev/product.img -O product.img
+        wget https://download1582.mediafire.com/r98cpcfnmxkgHGVOJ317FH2hUhTNdxvM4crIgygZquW1YIx5Pdls7TlVX9qdliHB-flZ8s2hdHFogQaXkDuLIpqh9wRJ7pqvQ9-H91teAn3UvhL4N6C4KWy8_2cOw78iX1Y6wLP4nBGrmbDyx1L_UF0i60rlLSih1htO7SBBzcNF/2xbuj6f2fm82sm7/system_ext.img -O system_ext.img
         
     - name: Packing
       run: |
