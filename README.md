@@ -3,7 +3,7 @@
 # Note from Endemanset
 - The reason why i forked this was just to make GSI for unfortunate Bit 9 Security Layout users like me
 - I will do all the work for you all 
-
+- Both LineageOS and AOSP works (Based on SM-A035F)
 -- End
 
 - This tool can create ODIN flashable super.tar
