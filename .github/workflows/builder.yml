@@ -22,7 +22,7 @@ on:
         VENDOR:
               description: 'Enter Direct Link Of Your Version Vendor'
               required: true
-              default: 'https://download1649.mediafire.com/9cs1jllt2mrg90A0Ww8zbeYfvuwQUFp0CVG7UDqrY4maGhsHZkbzf7__2U740z5X-6sk4Qrioq2Tr1UAbluXMcxdiZ0GgjsHM7teUl44NKR08vWVCT4xTn5WLpp6klKGYsqlC7rF93CyaZdV3txtLaM7nohaC1nG945Ww1fEKVmz/js7lzvk4ldnbd07/vendor.img'
+              default: 'https://download1649.mediafire.com/i4ytk58ssnegwnSPoKgpwH7K4N5RCVVKIBC2Z9PPLCxchcTO_k3r3YLkmQKmyUCol_mS1EsTbav0NCCTois_hm6QAk-xbte1BVWOgCIr1RNSlbxGA5k6mIb1KwEQzn5TMoD8a4nbWtFRMbiT1jTHkVDsc9lptGUopqQuwvpcfXAh/js7lzvk4ldnbd07/vendor.img'
 
 jobs:
   Build:
@@ -63,8 +63,8 @@ jobs:
         
         # 1. Download your original sparse MediaFire files
         wget ${{ github.event.inputs.VENDOR }} -O vendor_sparse.img
-        wget https://download1588.mediafire.com/e1m9lvaum21gffBvdrV63zhvf_sqLVAnheRJyYdvwnoLlv39r_Vd0PnlkkIPhhQC_IVwOyPZw_jRkZ6Dx2gQrDZPvf7AORN4A_ZmXFQkYQr2ptpswx23M_ga-XXdlWggDYNpkW3eELEws9xF5T1NoKttTnN0pMFOwPxQkOl3S4c/1ctglyzzucthqev/product.img -O product_sparse.img
-        wget https://download1582.mediafire.com/wcfd5n6in2ngX8rH8CR5Lu1qlv3bpYhaPQQJWuUoasnHBUVSdQsfA2J3ev_0QpP8j5QtZU3NvbZ35t6FNOCxcX-DG2xHcZw7R6WZrso-AEylS9b7QUeEyKYZLO1QUXPlJIdSgcz63I6-0yBDUL29eNwlX_hLx2JVNbqp8IHsRZY/2xbuj6f2fm82sm7/system_ext.img -O system_ext_sparse.img
+        wget https://download1588.mediafire.com/ica6dzcbp4lgzzAa-IaOGvBH2d6wA7SthVtCZ_Pf00ILY0PzqEVZ7-6X70tL1SDiMQiagoNulVHtoSirNbTusEP9siurGy8qG2xO1dKj0QcwV1-IsERObUQltXl13T9UUSk5VbrogIZJaf4_tAOy-1YAZPPP4GjD1SZOXvmjv_kz/1ctglyzzucthqev/product.img -O product_sparse.img
+        wget https://download1582.mediafire.com/ja14gk678a0gqqaaLg4oYjjp4S83wGs3rwZxd78ndABdpIE9Srd5WjkvngENQrozBkoEl0TvzHLLKmn0aWlrCC1AlaeUy9lMKpdur_K_pDNXSBfxgWfadFnuKGiRmcRJ6g4B_xQZuF57mtCRBrE-XrbShqOINlryts4793c-K81w/2xbuj6f2fm82sm7/system_ext.img -O system_ext_sparse.img
 
         # 2. De-sparse all three files into true raw binary images
         simg2img vendor_sparse.img vendor.img
