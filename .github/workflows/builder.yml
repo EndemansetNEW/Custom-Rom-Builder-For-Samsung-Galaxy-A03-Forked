@@ -69,7 +69,7 @@ jobs:
     - name: Packing
       run: |
         cd lpbinary/binary
-        ./lpmake --metadata-size 65536 --super-name super --metadata-slots 2 --device super:6763315200 --group main:6761218048 --partition system:readonly:$(ls -nl system.img | awk '{print $5}'):main --image system=system.img --partition vendor:readonly:$(ls -nl vendor.img | awk '{print $5}'):main --image vendor=vendor.img --partition product:readonly:$(ls -nl product.img | awk '{print $5}'):main --image product=product.img --partition system_ext:readonly:$(ls -nl system_ext.img | awk '{print $5}'):main --image system_ext=system_ext.img --sparse --output super.img
+        ./lpmake --metadata-size 65536 --super-name super --metadata-slots 3 --device super:6763315200 --group main:6761218048 --partition system:readonly:$(ls -nl system.img | awk '{print $5}'):main --image system=system.img --partition vendor:readonly:$(ls -nl vendor.img | awk '{print $5}'):main --image vendor=vendor.img --partition product:readonly:$(ls -nl product.img | awk '{print $5}'):main --image product=product.img --partition system_ext:readonly:$(ls -nl system_ext.img | awk '{print $5}'):main --image system_ext=system_ext.img --sparse --output super.img
 
     - name: Creating tar and compressing to 7z
       run: |
