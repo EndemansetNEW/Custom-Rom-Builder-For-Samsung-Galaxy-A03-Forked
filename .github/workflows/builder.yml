@@ -61,15 +61,11 @@ jobs:
       run: |
         cd lpbinary/binary
         
-        # 1. Download vendor as sparse and convert it to raw
-        wget ${{ github.event.inputs.VENDOR }} -O vendor_sparse.img
-        simg2img vendor_sparse.img vendor.img
-        rm -rf vendor_sparse.img
-
-        # 2. Download product and system_ext directly as raw images (No simg2img needed!)
-        wget "wget https://download1588.mediafire.com/ica6dzcbp4lgzzAa-IaOGvBH2d6wA7SthVtCZ_Pf00ILY0PzqEVZ7-6X70tL1SDiMQiagoNulVHtoSirNbTusEP9siurGy8qG2xO1dKj0QcwV1-IsERObUQltXl13T9UUSk5VbrogIZJaf4_tAOy-1YAZPPP4GjD1SZOXvmjv_kz/1ctglyzzucthqev/product.img" -O product.img
-        wget "https://download1582.mediafire.com/ja14gk678a0gqqaaLg4oYjjp4S83wGs3rwZxd78ndABdpIE9Srd5WjkvngENQrozBkoEl0TvzHLLKmn0aWlrCC1AlaeUy9lMKpdur_K_pDNXSBfxgWfadFnuKGiRmcRJ6g4B_xQZuF57mtCRBrE-XrbShqOINlryts4793c-K81w/2xbuj6f2fm82sm7/system_ext.img" -O system_ext.img
-
+        # Download everything cleanly as direct raw images—no tool conversions needed!
+        wget ${{ github.event.inputs.VENDOR }} -O vendor.img
+        wget https://download1588.mediafire.com/ica6dzcbp4lgzzAa-IaOGvBH2d6wA7SthVtCZ_Pf00ILY0PzqEVZ7-6X70tL1SDiMQiagoNulVHtoSirNbTusEP9siurGy8qG2xO1dKj0QcwV1-IsERObUQltXl13T9UUSk5VbrogIZJaf4_tAOy-1YAZPPP4GjD1SZOXvmjv_kz/1ctglyzzucthqev/product.img -O product.img
+        wget https://download1582.mediafire.com/ja14gk678a0gqqaaLg4oYjjp4S83wGs3rwZxd78ndABdpIE9Srd5WjkvngENQrozBkoEl0TvzHLLKmn0aWlrCC1AlaeUy9lMKpdur_K_pDNXSBfxgWfadFnuKGiRmcRJ6g4B_xQZuF57mtCRBrE-XrbShqOINlryts4793c-K81w/2xbuj6f2fm82sm7/system_ext.img -O system_ext.img
+        
     - name: Packing
       run: |
         cd lpbinary/binary
