@@ -50,10 +50,10 @@ jobs:
         mkdir sys
         mv *.gz sys/
         cd sys
-        gunzip lineage-22.2-20250621-UNOFFICIAL-gsi_arm64_vN.img.gz
+        gunzip *.gz
         
-        # Convert the sparse image to a true raw image file
-        simg2img lineage-22.2-20250621-UNOFFICIAL-gsi_arm64_vN.img ../system.img
+        # Pass the extracted raw system partition directly back up into the build folder
+        mv *.img ../system.img
         
         cd ..
 
