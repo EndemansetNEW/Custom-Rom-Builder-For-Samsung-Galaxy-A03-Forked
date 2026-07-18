@@ -4,30 +4,30 @@ permissions:
 on:
   push:
     branches:
-      - main  # Change this to your desired branch
+      - main
   workflow_dispatch:
     inputs:
-        GSI:
-              description: ' GSI Image Direct Link '
-              required: true
-              default: 'https://github.com/ponces/treble_build_aosp/releases/download/v2023.12.01/aosp-arm64-ab-gapps-14.0-20231201.img.xz'        
-        NAME:
-              description: 'Rom Name'
-              required: true
-              default: 'aosp-arm64-ab-gapps-14.0-a03.7z'
-        VERSION:
-              description: 'Baseband Version'
-              required: true
-              default: 'A035FXXS9CYG1'
-        VENDOR:
-              description: 'Enter Direct Link Of Your Version Vendor'
-              required: true
-              default: 'https://download1649.mediafire.com/4jjc3818zqcgZ-3nrTM2vGcXVFkxGwm7-PAk9CoQMdMa_IiwKMwsG3hHp54lRylT4C-BfH2nQ-m9dLes9S93oIlS1bCPP085SKk_VRMeHsxKVExqsUjpfG5r2NNCUfJjAtc39fT6QRIf3eCiV3LulqEUupYStmyBNuGX1r8ZN9tx/js7lzvk4ldnbd07/vendor.img'
+      GSI:
+        description: ' GSI Image Direct Link '
+        required: true
+        default: 'https://github.com/ponces/treble_build_aosp/releases/download/v2023.12.01/aosp-arm64-ab-gapps-14.0-20231201.img.xz'        
+      NAME:
+        description: 'Rom Name'
+        required: true
+        default: 'aosp-arm64-ab-gapps-14.0-a03.7z'
+      VERSION:
+        description: 'Baseband Version'
+        required: true
+        default: 'A035FXXS9CYG1'
+      VENDOR:
+        description: 'Enter Direct Link Of Your Version Vendor'
+        required: true
+        default: 'https://mediafire.com'
+
 jobs:
   Build:
     runs-on: ubuntu-latest
 
-    
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
@@ -36,39 +36,44 @@ jobs:
       run: |
         sudo apt update
         sudo apt install -y zip xz-utils unzip p7zip-full wget
-        
+
     - name: Installing Tools
       run: |
         git clone https://github.com/Exynos-nigg/lpunpack-lpmake-mirror.git lpbinary
         cd lpbinary
         bash install.sh
+
     - name: Downloading Your GSI And Extracting
       run: |
         cd lpbinary/binary
-        wget ${{ github.event.inputs.GSI }}
+        wget "${{ github.event.inputs.GSI }}" -O gsi.img.xz
         mkdir sys
-        mv *.xz sys
+        mv gsi.img.xz sys/
         cd sys
         unxz *.xz
         mv *.img ../system.img
         cd ..
+
     - name: Preparing Files
       run: |
         cd lpbinary/binary
-        wget ${{ github.event.inputs.VENDOR }}
-        wget https://download1588.mediafire.com/e1m9lvaum21gffBvdrV63zhvf_sqLVAnheRJyYdvwnoLlv39r_Vd0PnlkkIPhhQC_IVwOyPZw_jRkZ6Dx2gQrDZPvf7AORN4A_ZmXFQkYQr2ptpswx23M_ga-XXdlWggDYNpkW3eELEws9xF5T1NoKttTnN0pMFOwPxQkOl3S4c/1ctglyzzucthqev/product.img
-        wget https://download1582.mediafire.com/wcfd5n6in2ngX8rH8CR5Lu1qlv3bpYhaPQQJWuUoasnHBUVSdQsfA2J3ev_0QpP8j5QtZU3NvbZ35t6FNOCxcX-DG2xHcZw7R6WZrso-AEylS9b7QUeEyKYZLO1QUXPlJIdSgcz63I6-0yBDUL29eNwlX_hLx2JVNbqp8IHsRZY/2xbuj6f2fm82sm7/system_ext.img
+        wget "${{ github.event.inputs.VENDOR }}" -O vendor.img
+        wget "https://mediafire.com" -O product.img
+        wget "https://mediafire.com" -O system_ext.img
+
     - name: Packing
       run: |
         cd lpbinary/binary
         ./lpmake --metadata-size 65536 --super-name super --metadata-slots 2 --device super:6763315200 --group main:6761218048 --partition system:readonly:$(ls -nl system.img | awk '{print $5}'):main --image system=system.img --partition vendor:readonly:$(ls -nl vendor.img | awk '{print $5}'):main --image vendor=vendor.img --partition product:readonly:$(ls -nl product.img | awk '{print $5}'):main --image product=product.img --partition system_ext:readonly:$(ls -nl system_ext.img | awk '{print $5}'):main --image system_ext=system_ext.img --sparse --output super.img
+
     - name: Creating tar and compressing to 7z
       run: |
         cd lpbinary/binary
         tar -cvf super.tar super.img
         rm -rf super.img
-        7z a ${{ github.event.inputs.NAME }} super.tar
+        7z a "${{ github.event.inputs.NAME }}" super.tar
         rm -rf super.tar
+
     - name: Upload to Release
       uses: softprops/action-gh-release@v1
       with:
