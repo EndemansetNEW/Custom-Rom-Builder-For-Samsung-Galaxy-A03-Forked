@@ -18,11 +18,11 @@ on:
         VERSION:
               description: 'Baseband Version'
               required: true
-              default: 'A035FXXU4CWI1'
+              default: 'A035FXXS9CYG1'
         VENDOR:
               description: 'Enter Direct Link Of Your Version Vendor'
               required: true
-              default: 'https://sourceforge.net/projects/a03-files/files/A035FXXU4CWI1/vendor.img'
+              default: 'https://download1649.mediafire.com/vdqkdn85l99goW9R32vzjL5hgjJHRpNLqA1emwTsKczP9HuJ2Re4PvW8uGWtjESjPAWKuE94X6VKkHMa9Gkn3bhFeCQOMP-ajyUhmUbYqH8SyVEj-fWzjDQWPRhQhHKZL3T2qM3rihDHawJ2SmxyPeVhlbiWc2kvubsiSKQFfHWB/js7lzvk4ldnbd07/vendor.img'
 jobs:
   Build:
     runs-on: ubuntu-latest
@@ -56,8 +56,8 @@ jobs:
       run: |
         cd lpbinary/binary
         wget ${{ github.event.inputs.VENDOR }}
-        wget https://sourceforge.net/projects/a03-files/files/product.img
-        wget https://sourceforge.net/projects/a03-files/files/system_ext.img
+        wget https://drive.usercontent.google.com/download?id=135vkcLy5NkLpD-fTXi522AYRVMa_JDjd&export=download&confirm=t
+        wget https://drive.usercontent.google.com/download?id=1mrSZVfm7xcNueyYtyXY3erpIKR58f8Zr&export=download&confirm=t
     - name: Packing
       run: |
         cd lpbinary/binary
