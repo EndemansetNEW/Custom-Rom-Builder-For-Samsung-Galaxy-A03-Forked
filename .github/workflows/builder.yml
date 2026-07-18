@@ -48,9 +48,9 @@ jobs:
         cd lpbinary/binary
         wget ${{ github.event.inputs.GSI }}
         mkdir sys
-        mv gsi.img.gz sys/
+        mv *.gz sys/
         cd sys
-        gunzip gsi.img.gz
+        gunzip lineage-20.0-20251021-UNOFFICIAL-arm64_bvN.img.gz
         mv *.img ../system.img
         cd ..
 
