@@ -1,5 +1,10 @@
 # Custom-Rom-Builder-For-Samsung-Galaxy-A03
 
+# Note from Endemanset
+- The reason why i forked this was just to make GSI for unfortunate Bit 9 Security Layout users like me
+- I will do all the work for you all 
+
+-- End
 
 - This tool can create ODIN flashable super.tar
 - After running this workflow you'll get a .7z file in the releases section.
