@@ -22,7 +22,7 @@ on:
         VENDOR:
               description: 'Enter Direct Link Of Your Version Vendor'
               required: true
-              default: 'https://download1649.mediafire.com/vdqkdn85l99goW9R32vzjL5hgjJHRpNLqA1emwTsKczP9HuJ2Re4PvW8uGWtjESjPAWKuE94X6VKkHMa9Gkn3bhFeCQOMP-ajyUhmUbYqH8SyVEj-fWzjDQWPRhQhHKZL3T2qM3rihDHawJ2SmxyPeVhlbiWc2kvubsiSKQFfHWB/js7lzvk4ldnbd07/vendor.img'
+              default: 'https://download1649.mediafire.com/4jjc3818zqcgZ-3nrTM2vGcXVFkxGwm7-PAk9CoQMdMa_IiwKMwsG3hHp54lRylT4C-BfH2nQ-m9dLes9S93oIlS1bCPP085SKk_VRMeHsxKVExqsUjpfG5r2NNCUfJjAtc39fT6QRIf3eCiV3LulqEUupYStmyBNuGX1r8ZN9tx/js7lzvk4ldnbd07/vendor.img'
 jobs:
   Build:
     runs-on: ubuntu-latest
