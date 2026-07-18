@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
         GSI:
-              description: ' GSI Image Direct Link '
+              description: 'GSI Image Direct Link'
               required: true
               default: 'https://github.com/ponces/treble_build_aosp/releases/download/v2023.12.01/aosp-arm64-ab-gapps-14.0-20231201.img.xz'        
         NAME:
