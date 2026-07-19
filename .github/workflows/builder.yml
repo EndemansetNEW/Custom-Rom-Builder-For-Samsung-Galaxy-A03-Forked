@@ -10,7 +10,7 @@ on:
         GSI:
               description: 'GSI Image Direct Link'
               required: true
-              default: 'https://sourceforge.net/projects/andyyan-gsi/files/lineage-21-td/lineage-21.0-20250621-UNOFFICIAL-arm64_bvS.img.gz'        
+              default: 'https://sourceforge.net/projects/thegsis/files/Evolution-X/EvolutionX-12.1_arm64-bvN-UNOFFICIAL.img.xz'        
         NAME:
               description: 'Rom Name'
               required: true
@@ -48,13 +48,22 @@ jobs:
         cd lpbinary/binary
         wget ${{ github.event.inputs.GSI }}
         mkdir sys
-        mv *.gz sys/
+        
+        # Move whatever compressed file arrived into the processing folder
+        mv *.gz sys/ 2>/dev/null || true
+        mv *.xz sys/ 2>/dev/null || true
+        
         cd sys
-        gunzip *.gz
         
-        # Pass the extracted raw system partition directly back up into the build folder
+        # Auto-detect and extract based on the file extension present
+        if [ -f *.gz ]; then
+          gunzip *.gz
+        elif [ -f *.xz ]; then
+          unxz *.xz
+        fi
+        
+        # Pass the raw system partition back up to the build folder
         mv *.img ../system.img
-        
         cd ..
 
     - name: Preparing Files
