@@ -4,13 +4,13 @@ permissions:
 on:
   push:
     branches:
-      - main  # Change this to your desired branch
+      - main
   workflow_dispatch:
     inputs:
         GSI:
-              description: ' GSI Image Direct Link '
+              description: 'GSI Image Direct Link'
               required: true
-              default: 'https://github.com/ponces/treble_build_aosp/releases/download/v2023.12.01/aosp-arm64-ab-gapps-14.0-20231201.img.xz'        
+              default: 'https://sourceforge.net/projects/andyyan-gsi/files/lineage-21-pre-qpr2-td/lineage-21.0-20260614-UNOFFICIAL-arm64_bvN.img.gz'        
         NAME:
               description: 'Rom Name'
               required: true
@@ -18,16 +18,16 @@ on:
         VERSION:
               description: 'Baseband Version'
               required: true
-              default: 'A035FXXU4CWI1'
+              default: 'A035FXXS9CYG1'
         VENDOR:
               description: 'Enter Direct Link Of Your Version Vendor'
               required: true
-              default: 'https://sourceforge.net/projects/a03-files/files/A035FXXU4CWI1/vendor.img'
+              default: 'https://download1649.mediafire.com/qhpogi2suefghI888rPeWMg1H-r7nBIIY4cQoXGQ3s0QzUf7AouNuWb7tKjS8EQxXL5N6BSrMrTRDEXFUU9B7Ngqst57MrcDNEuh6VVPiBUbQoPpZ2V733VDtzVPTlSwwfJUNb9F6-40sGAL2VGXpNxsn5TPohfYhn05hyKM6vBK/js7lzvk4ldnbd07/vendor.img'
+
 jobs:
   Build:
     runs-on: ubuntu-latest
 
-    
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
@@ -35,33 +35,51 @@ jobs:
     - name: Install Dependencies
       run: |
         sudo apt update
-        sudo apt install -y zip xz-utils unzip p7zip-full wget
+        sudo apt install -y zip xz-utils unzip p7zip-full wget android-sdk-libsparse-utils
         
     - name: Installing Tools
       run: |
         git clone https://github.com/Exynos-nigg/lpunpack-lpmake-mirror.git lpbinary
         cd lpbinary
         bash install.sh
+
     - name: Downloading Your GSI And Extracting
       run: |
         cd lpbinary/binary
         wget ${{ github.event.inputs.GSI }}
         mkdir sys
-        mv *.xz sys
+        
+        # Move whatever compressed file arrived into the processing folder
+        mv *.gz sys/ 2>/dev/null || true
+        mv *.xz sys/ 2>/dev/null || true
+        
         cd sys
-        unxz *.xz
+        
+        # Auto-detect and extract based on the file extension present
+        if [ -f *.gz ]; then
+          gunzip *.gz
+        elif [ -f *.xz ]; then
+          unxz *.xz
+        fi
+        
+        # Pass the raw system partition back up to the build folder
         mv *.img ../system.img
         cd ..
+
     - name: Preparing Files
       run: |
         cd lpbinary/binary
-        wget ${{ github.event.inputs.VENDOR }}
-        wget https://sourceforge.net/projects/a03-files/files/product.img
-        wget https://sourceforge.net/projects/a03-files/files/system_ext.img
+        
+        # Download everything cleanly as direct raw images—no tool conversions needed!
+        wget ${{ github.event.inputs.VENDOR }} -O vendor.img
+        wget https://download1588.mediafire.com/e589cab2db5gUkqiQLgATu5cN70ExMABxkmUdABNyjQ2W-e_evQTUWhrhy32GKcRRnwh82F6g0_Dg417-rVn-2F7nENwiSd8LAffB_nhb_TTwVOZ_usWHmohgR5g1DCpN1NwuUmhlc8tlTtj4-BARunXMRsYrndnLddM6iTyn6xY/1ctglyzzucthqev/product.img -O product.img
+        wget https://download1582.mediafire.com/e3480zhruwlg39dLSTD8oUdSW8bZcGW5b8rf0sF3is4iXCTxBjxrBtj_H3PPTK9wJ9b4Y2VbG2_Vh9GO3-QHV7tEj0ZNlccuOYEJf11-nFqOSRYmAQtO2a1hJkK0DQ5x__bzyin0hAxp1HjTETgkA9hjEDmdvUP6kd77x6a_ov8L/2xbuj6f2fm82sm7/system_ext.img -O system_ext.img
+        
     - name: Packing
       run: |
         cd lpbinary/binary
-        ./lpmake --metadata-size 65536 --super-name super --metadata-slots 2 --device super:6763315200 --group main:6761218048 --partition system:readonly:$(ls -nl system.img | awk '{print $5}'):main --image system=system.img --partition vendor:readonly:$(ls -nl vendor.img | awk '{print $5}'):main --image vendor=vendor.img --partition product:readonly:$(ls -nl product.img | awk '{print $5}'):main --image product=product.img --partition system_ext:readonly:$(ls -nl system_ext.img | awk '{print $5}'):main --image system_ext=system_ext.img --sparse --output super.img
+        ./lpmake --metadata-size 65536 --super-name super --metadata-slots 3 --device super:6763315200 --group main:6761218048 --partition system:readonly:$(ls -nl system.img | awk '{print $5}'):main --image system=system.img --partition vendor:readonly:$(ls -nl vendor.img | awk '{print $5}'):main --image vendor=vendor.img --partition product:readonly:$(ls -nl product.img | awk '{print $5}'):main --image product=product.img --partition system_ext:readonly:$(ls -nl system_ext.img | awk '{print $5}'):main --image system_ext=system_ext.img --sparse --output super.img
+
     - name: Creating tar and compressing to 7z
       run: |
         cd lpbinary/binary
@@ -69,6 +87,7 @@ jobs:
         rm -rf super.img
         7z a ${{ github.event.inputs.NAME }} super.tar
         rm -rf super.tar
+
     - name: Upload to Release
       uses: softprops/action-gh-release@v1
       with:

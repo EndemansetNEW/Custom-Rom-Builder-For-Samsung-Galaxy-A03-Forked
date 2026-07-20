@@ -1,5 +1,14 @@
 # Custom-Rom-Builder-For-Samsung-Galaxy-A03
 
+# Note from Endemanset
+- The reason why i forked this was just to make GSI for unfortunate Bit 9 Security Layout users like me
+- I will do all the work for you all 
+- Both LineageOS 20 and 21 + Pre Quarterly Platform Release 21 build and AOSP 14 works (Based on SM-A035F)
+- Since the OG repo hasnt been updated, i am updating this
+- Evolution X is for the users to try for themselves
+
+  
+------------- End
 
 - This tool can create ODIN flashable super.tar
 - After running this workflow you'll get a .7z file in the releases section.
