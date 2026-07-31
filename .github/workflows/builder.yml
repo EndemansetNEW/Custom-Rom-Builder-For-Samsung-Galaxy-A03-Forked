@@ -79,13 +79,15 @@ jobs:
       run: |
         cd lpbinary/binary
         ./lpmake --metadata-size 65536 --super-name super --metadata-slots 3 --device super:6763315200 --group main:6761218048 --partition system:readonly:$(ls -nl system.img | awk '{print $5}'):main --image system=system.img --partition vendor:readonly:$(ls -nl vendor.img | awk '{print $5}'):main --image vendor=vendor.img --partition product:readonly:$(ls -nl product.img | awk '{print $5}'):main --image product=product.img --partition system_ext:readonly:$(ls -nl system_ext.img | awk '{print $5}'):main --image system_ext=system_ext.img --sparse --output super.img
-
     - name: Creating tar and compressing to 7z
       run: |
         cd lpbinary/binary
+        # Create the Odin-compatible TAR block matrix cleanly
         tar -cvf super.tar super.img
-        rm -rf super.img
+        # Force 7z to compress the TAR container FIRST before you delete anything!
         7z a ${{ github.event.inputs.NAME }} super.tar
+        # Safely clean up the massive temporary image files after compression completes
+        rm -rf super.img
         rm -rf super.tar
 
     - name: Upload to Release
