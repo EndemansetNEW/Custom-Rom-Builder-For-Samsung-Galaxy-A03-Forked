@@ -6,7 +6,8 @@
 - Both LineageOS 20 and 21 + Pre Quarterly Platform Release 21 build and AOSP 14 works (Based on SM-A035F)
 - Since the OG repo hasnt been updated, i am updating this
 - Evolution X is for the users to try for themselves
-
+- SourceForge test and LineageOS 21 (latest) are the same
+  
   
 ------------- End
 
