@@ -5,7 +5,7 @@
 - I will do all the work for you all 
 - Both LineageOS 20 and 21 + Pre Quarterly Platform Release 21 build and AOSP 14 works (Based on SM-A035F)
 - Since the OG repo hasnt been updated, i am updating this
-- User Tests contains : PixelOS TD (Android 14), Evolution X and AOSP 14 
+- User Tests contains : PixelOS TD (Android 14), Evolution X and AOSP 14 (GMS UP1A)
 - SourceForge test and LineageOS 21 (latest) are the same
   
   
