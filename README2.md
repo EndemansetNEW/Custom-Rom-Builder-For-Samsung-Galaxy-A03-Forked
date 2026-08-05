@@ -1,2 +1,2 @@
-uhhh im not responsible for void warranties and data loss
-also check releases tab for other than lineage 21
+You install this at your own risk. Me not responsible for any bootloops, data loss, soft-brick, or hardware damage.
+
