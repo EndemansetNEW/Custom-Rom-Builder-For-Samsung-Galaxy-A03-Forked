@@ -10,11 +10,11 @@ on:
         GSI:
               description: 'GSI Image Direct Link'
               required: true
-              default: 'https://sourceforge.net/projects/andyyan-gsi/files/lineage-21-pre-qpr2-td/lineage-21.0-20260614-UNOFFICIAL-arm64_bvN.img.gz'        
+              default: 'https://sourceforge.net/projects/misterztr-gsi/files/PixelOS/Android%2014/PixelOS_treble_arm64_bN_slim-14.0-20240824.img.xz'        
         NAME:
               description: 'Rom Name'
               required: true
-              default: 'aosp-arm64-ab-gapps-14.0-a03.7z'
+              default: 'PixelOS_treble_arm64_bN_slim-14.0-20240824.img.xz'
         VERSION:
               description: 'Baseband Version'
               required: true
