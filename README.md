@@ -38,7 +38,7 @@ https://sourceforge.net/projects/andyyan-gsi/files/lineage-20.x/lineage-20.1-202
  ```sh
 https://sourceforge.net/projects/andyyan-gsi/files/lineage-20.x/lineage-20.1-20231116-UNOFFICIAL-arm64_bgN.img.xz
  ```
-<br>⚬ The link must be end with .xz</br>
+<br>⚬ The link must be end with .xz or a .gz or a .zip</br>
 <br>2. Add Rom Name</br>
 <br>⚬ Then add the rom name it should be [rom_name]-[version]-[device version]-[arm64]-[gapps_or_vanila].7z<br>
 like this LineageOS-20.1-a035fxxnn-arm64-gapps.7z
