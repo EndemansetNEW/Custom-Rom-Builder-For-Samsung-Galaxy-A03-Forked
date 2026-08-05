@@ -29,8 +29,8 @@
 ```sh
 https://github.com/ponces/treble_build_aosp/releases/download/v2023.12.01/aosp-arm64-ab-gapps-14.0-20231201.img.xz
 ```
-- If you use link form sourceforge.net;
-<br>⚬ Copy downlad link of your GSI you'll get a link like this:</br>
+- If you use link from Sourceforge.net;
+<br>⚬ Copy Download link of your GSI you'll get a link like this:</br>
  ```sh
 https://sourceforge.net/projects/andyyan-gsi/files/lineage-20.x/lineage-20.1-20231116-UNOFFICIAL-arm64_bgN.img.xz/download
  ```
@@ -45,7 +45,7 @@ like this LineageOS-20.1-a035fxxnn-arm64-gapps.7z
 
 <br>3. Add Baseband Version </br>
 
-<br>4. Add Vendor Img Link
+<br>4. Add Vendor IMG Link
   - Use direct Link or remove /download from the ending of link if you use sourceforge link
   - Link must be end like vendor.img
  # Credits:
