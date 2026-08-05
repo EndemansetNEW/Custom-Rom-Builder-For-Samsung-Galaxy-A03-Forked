@@ -10,11 +10,11 @@ on:
         GSI:
               description: 'GSI Image Direct Link'
               required: true
-              default: 'https://sourceforge.net/projects/misterztr-gsi/files/PixelOS/Android%2014/PixelOS_treble_arm64_bN_slim-14.0-20240824.img.xz'        
+              default: 'https://dl.google.com/developers/android/udc/images/gsi/gsi_gms_arm64-exp-UP1A.231005.007-10754064-77f9c9df.zip'        
         NAME:
               description: 'Rom Name'
               required: true
-              default: 'PixelOS_treble_arm64_bN_slim-14.0-20240824.img.xz'
+              default: 'aosp_gms_arm64-exp-UP1A.7z'
         VERSION:
               description: 'Baseband Version'
               required: true
@@ -46,26 +46,24 @@ jobs:
     - name: Downloading Your GSI And Extracting
       run: |
         cd lpbinary/binary
-        wget ${{ github.event.inputs.GSI }}
+        wget ${{ github.event.inputs.GSI }} -O gsi_archive
         mkdir sys
         
-        # Move whatever compressed file arrived into the processing folder
-        mv *.gz sys/ 2>/dev/null || true
-        mv *.xz sys/ 2>/dev/null || true
-        
-        cd sys
-        
-        # Auto-detect and extract based on the file extension present
-        if [ -f *.gz ]; then
-          gunzip *.gz
-        elif [ -f *.xz ]; then
-          unxz *.xz
+        # Check the magic bytes or extension type to route extraction
+        if unzip -t gsi_archive >/dev/null 2>&1; then
+          unzip gsi_archive -d sys/
+        elif file gsi_archive | grep -q 'gzip'; then
+          mv gsi_archive sys/gsi.img.gz
+          cd sys && gunzip gsi.img.gz && cd ..
+        elif file gsi_archive | grep -q 'XZ'; then
+          mv gsi_archive sys/gsi.img.xz
+          cd sys && unxz gsi.img.xz && cd ..
         fi
         
-        # Pass the raw system partition back up to the build folder
-        mv *.img ../system.img
-        cd ..
-
+        # Pull the extracted raw system partition back to the build folder root
+        mv sys/*.img system.img 2>/dev/null || mv sys/system.img system.img
+        rm -rf sys gsi_archive
+        
     - name: Preparing Files
       run: |
         cd lpbinary/binary
