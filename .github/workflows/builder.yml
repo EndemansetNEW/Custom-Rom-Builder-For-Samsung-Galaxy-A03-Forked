@@ -10,11 +10,11 @@ on:
         GSI:
               description: 'GSI Image Direct Link'
               required: true
-              default: 'https://dl.google.com/developers/android/udc/images/gsi/gsi_gms_arm64-exp-UP1A.231005.007-10754064-77f9c9df.zip'        
+              default: 'https://sourceforge.net/projects/andyyan-gsi/files/lineage-21-pre-qpr2-td/lineage-21.0-20260614-UNOFFICIAL-arm64_bgN-signed.img.gz'        
         NAME:
               description: 'Rom Name'
               required: true
-              default: 'aosp_gms_arm64-exp-UP1A.7z'
+              default: 'lineage-21.0-arm64-ab-NotVanilla-June2026-BIT9.7z-29704459632'
         VERSION:
               description: 'Baseband Version'
               required: true
@@ -43,7 +43,7 @@ jobs:
         cd lpbinary
         bash install.sh
 
-    - name: Downloading Your GSI And Extracting
+    - name: Downloading Your GSI And Extracting # i hate this part personally
       run: |
         cd lpbinary/binary
         wget ${{ github.event.inputs.GSI }} -O gsi_archive
