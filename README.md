@@ -5,7 +5,8 @@
 - I will do all the work for you all 
 - Both LineageOS 20 and 21 + Pre Quarterly Platform Release 21 build and AOSP 14 works (Based on SM-A035F)
 - Since the OG repo hasnt been updated, i am updating this
-- User Tests contains : PixelOS TD (Android 14), Evolution X, AOSP 14 (GMS UP1A) and NotVanilla LineageOS 21
+- User Tests contains : PixelOS TD (Android 14), Evolution X, AOSP 14 (GMS UP1A), NotVanilla LineageOS 21 P-QPR2 and ArrowOS
+- I recommend ArrowOS for stability (because of size), LineageOS 21 (NotVanilla P-QPR2) for Google Play and smooth Android 14, AOSP 14 (Oldest) for a Pixel Experience (get it?), LineageOS 20 for Smooth Android 13 (like ArrowOS)
 - SourceForge test and LineageOS 21 (latest) are the same
 - Remember to change your Vendor, Product and System_EXT
   
