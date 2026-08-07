@@ -56,7 +56,7 @@ like this LineageOS-20.1-a035fxxnn-arm64-gapps.7z
 - [bruh™](https://github.com/Exynos-nibba)
 - [gauravv.x1](https://github.com/gauravv-x1)
 
-  # Lists of GSIs I used
+  # Lists of GSIs I used (Endemanset)
 - [LineageOS GSI](https://sourceforge.net/projects/andyyan-gsi/files)
 - [AOSP (Oldest)](https://github.com/ponces/treble_build_aosp/releases/)
 - [Evolution X and some more GSIs](https://sourceforge.net/projects/thegsis/files/)
