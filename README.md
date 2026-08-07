@@ -56,6 +56,14 @@ like this LineageOS-20.1-a035fxxnn-arm64-gapps.7z
 - [bruh™](https://github.com/Exynos-nibba)
 - [gauravv.x1](https://github.com/gauravv-x1)
 
+  # Lists of GSIs I used
+- [LineageOS GSI](https://sourceforge.net/projects/andyyan-gsi/files)
+- [AOSP (Oldest)](https://github.com/ponces/treble_build_aosp/releases/)
+- [Evolution X and some more GSIs](https://sourceforge.net/projects/thegsis/files/)
+- [PixelOS GSI Downloads](https://sourceforge.net/projects/misterztr-gsi/files/PixelOS/Android%2014/)
+- [PixelOS GSI Github](https://github.com/MisterZtr/PixelOS_gsi/releases)
+- [AOSP (Second One)](https://developer.android.com/topic/generic-system-image/releases#android-gsi-14)
+- [ArrowOS GSI](https://github.com/naz664/ArrowOS_gsi/releases)
 
 
 
