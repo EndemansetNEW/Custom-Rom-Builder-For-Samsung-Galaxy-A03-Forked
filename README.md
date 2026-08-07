@@ -9,6 +9,7 @@
 - I recommend ArrowOS for stability (because of size), LineageOS 21 (NotVanilla P-QPR2) for Google Play and smooth Android 14, AOSP 14 (Oldest) for a Pixel Experience (get it?), LineageOS 20 for Smooth Android 13 (like ArrowOS)
 - SourceForge test and LineageOS 21 (latest) are the same
 - Remember to change your Vendor, Product and System_EXT
+- DO NOT USE VNDKLITE FOR YOUR CUSTOM ROM. ONLY USE NON VNDKLITE. IT WILL BOOTLOOP YOUR DEVICE
   
 ------------- End
 
