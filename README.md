@@ -1,6 +1,7 @@
 # Custom-Rom-Builder-For-Samsung-Galaxy-A03
 
 # Note from Endemanset
+- [Endemanset's Sourceforge Repo, prob also will have release files from the forked repo](https://sourceforge.net/projects/a03-file/files/)
 - The reason why i forked this was just to make GSIs for unfortunate Bit 9 Security Layout users like me
 - I will do all the work for you all 
 - Both LineageOS 20 and 21 + Pre Quarterly Platform Release 21 build and AOSP 14 works (Based on SM-A035F)
