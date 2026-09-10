@@ -10,7 +10,7 @@ on:
         GSI:
               description: 'GSI Image Direct Link'
               required: true
-              default: 'https://github.com/naz664/ArrowOS_gsi/releases/download/v2023.10.28/ArrowOS-13.1-arm64_bgN-slim-Unofficial.img.xz'        # find some recommendations in readme (last lines)
+              default: 'https://sourceforge.net/projects/a03-file/files/skibidirisingos.xz'        # find some recommendations in readme (last lines)
         NAME:
               description: 'Rom Name'
               required: true
