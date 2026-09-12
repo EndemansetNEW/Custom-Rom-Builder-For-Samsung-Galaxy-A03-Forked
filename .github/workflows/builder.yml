@@ -10,7 +10,7 @@ on:
         GSI:
               description: 'GSI Image Direct Link'
               required: true
-              default: 'https://sourceforge.net/projects/a03-file/files/skibidirisingos.xz'        # find some recommendations in readme (last lines)
+              default: 'https://sourceforge.net/projects/a03-file/files/sharplowmaybe.zip'        # find some recommendations in readme (last lines) // noooooo
         NAME:
               description: 'Rom Name'
               required: true
