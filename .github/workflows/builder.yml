@@ -37,7 +37,7 @@ jobs:
     - name: Install Dependencies
       run: |
         sudo apt update
-        sudo apt install -y zip xz-utils unzip p7zip-full p7zip-rar wget android-sdk-libsparse-utils file
+        sudo apt install -y zip xz-utils unzip p7zip-full 7zip-rar wget android-sdk-libsparse-utils file
 
     - name: Installing Tools
       run: |
