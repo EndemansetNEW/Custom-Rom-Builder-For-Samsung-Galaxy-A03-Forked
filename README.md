@@ -4,7 +4,7 @@
 - Extract that 7z file you'll get a super.tar. Just a .tar with the custom GSI.
 - Then Flash the super.tar using ODIN in AP Section.
 - You must select a custom PHH GSI with Android Version below 12.
-
+- You install this at your own risk. Me not responsible for any bootloops, data loss, soft-brick, or hardware damage.
 
 # How to Use this
 
@@ -12,7 +12,7 @@
 
 <br>1. Add Direct link of GSI</br>
 
-- You can directly use the link of GSI (.xz/.gz/.zip/.7z) from Github.
+- You can directly use the link of GSI (.xz/.gz/.zip/.7z/.img) from Github.
 - Like This:
 ```sh
 https://github.com/ponces/treble_build_aosp/releases/download/v2023.12.01/aosp-arm64-ab-gapps-14.0-20231201.img.xz
