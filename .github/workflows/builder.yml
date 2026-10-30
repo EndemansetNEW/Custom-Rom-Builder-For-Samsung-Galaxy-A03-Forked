@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       GSI:
-        description: 'GSI Image Direct Link' # supports .img, .7z, .xz, .gz, .zip
+        description: 'GSI Image Direct Link' # supports .img, .7z, .xz, .gz, .zip (wait what i have img suppot?)
         required: true
         default: 'https://github.com/naz664/ArrowOS_gsi/releases/download/v2023.10.28/ArrowOS-13.1-arm64_bgN-slim-Unofficial.img.xz'
       NAME:
@@ -28,16 +28,16 @@ on:
 
 jobs:
   Build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest 
 
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
 
-    - name: Install Dependencies
+    - name: Install Dependencies # should prob update stuff that is dead in this ubuntu runner
       run: |
         sudo apt update
-        sudo apt install -y zip xz-utils unzip p7zip-full 7zip-rar wget android-sdk-libsparse-utils file
+        sudo apt install -y zip xz-utils unzip p7zip-full 7zip-rar wget android-sdk-libsparse-utils file  
 
     - name: Installing Tools
       run: |
